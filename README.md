@@ -1,8 +1,8 @@
-# cplusplus---unrealengine
-# Use a base image com as dependências do Ubuntu
+### cplusplus---unrealengine
+### Use a base image com as dependências do Ubuntu
 FROM ubuntu:latest
 
-# Atualize os pacotes e instale as dependências
+### Atualize os pacotes e instale as dependências
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Baixe a Unreal Engine (substitua o link pelo link real)
+### Baixe a Unreal Engine (substitua o link pelo link real)
 RUN mkdir /unreal_engine && cd /unreal_engine && \
     git clone https://github.com/EpicGames/UnrealEngine.git && \
     cd UnrealEngine && \
@@ -20,14 +20,14 @@ RUN mkdir /unreal_engine && cd /unreal_engine && \
     ./GenerateProjectFiles.sh && \
     make
 
-# Defina o diretório de trabalho
+### Defina o diretório de trabalho
 WORKDIR /workspace
 
-# Exemplo de como adicionar seu código fonte
-# COPY . /workspace
+### Exemplo de como adicionar seu código fonte
+#### COPY . /workspace
 
-# Exemplo de como compilar seu projeto
-# RUN cmake . && make
+### Exemplo de como compilar seu projeto
+#### RUN cmake . && make
 
-# Comando padrão ao iniciar o contêiner
+### Comando padrão ao iniciar o contêiner
 CMD ["bash"]
